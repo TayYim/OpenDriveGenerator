@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<OpenDRIVE>
+    <header revMajor="1" revMinor="4" name="Testfile" version="1" date="Thu Feb 8 14:24:06 2007" north="2.0000000000000000e+03" south="-2.0000000000000000e+03" east="2.0000000000000000e+03" west="-2.0000000000000000e+03" />
+    <road name="onlyRoad" length="888" id="1" junction="-1">
+        <link />
+        <planView>
+        </planView>
+        <elevationProfile />
+        <lateralProfile />
+        <lanes>
+            <laneSection s="0.0000000000000000e+00">
+                <left>
+                    <lane id="1" type="driving" level="false">
+                        <link />
+                        <width sOffset="0.0000000000000000e+00" a="3.0000000000000000e+00" b="0.0000000000000000e+00" c="0.0000000000000000e+00" d="0.0000000000000000e+00" />
+                    </lane>
+                </left>
+                <center>
+                    <lane id="0" type="driving" level="false">
+                        <link />
+                        <width sOffset="0.0000000000000000e+00" a="0.0000000000000000e+00" b="0.0000000000000000e+00" c="0.0000000000000000e+00" d="0.0000000000000000e+00" />
+                    </lane>
+                </center>
+                <right>
+                    <lane id="-1" type="driving" level="false">
+                        <link />
+                        <width sOffset="0.0000000000000000e+00" a="3.0000000000000000e+00" b="0.0000000000000000e+00" c="0.0000000000000000e+00" d="0.0000000000000000e+00" />
+                    </lane>
+                </right>
+            </laneSection>
+        </lanes>
+        <objects />
+        <signals />
+    </road>
+</OpenDRIVE>
