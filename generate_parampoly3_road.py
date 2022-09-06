@@ -156,10 +156,12 @@ if __name__=="__main__":
     # output_path = "output.xodr"
 
     # Input x/y points
-    # old_xs= [0, 30, 40, 50, 150, 150 ]
-    # old_ys= [0, 20, 30, 40, 100, 180 ]
-    old_xs= [10, 30, 40, 50, 150, 30 ]
-    old_ys= [20, 20, 30, 40, 100, 180 ]
+    # limits 55-56 46.7-47.2
+    # 155.8 ok 159.34
+    old_xs= [0, 30, 40, 50, 150, 155 ]
+    old_ys= [0, 20, 30, 40, 100, 180 ]
+    # old_xs= [10, 30, 40, 50, 150, 30 ]
+    # old_ys= [20, 20, 30, 40, 100, 180 ]
 
     xs, ys = interpolate(old_xs, old_ys)
     xs = np.array(xs)
@@ -228,11 +230,11 @@ if __name__=="__main__":
     tree.write(output_path, pretty_print=True, method='xml', xml_declaration=True, encoding='utf-8')
 
     # validation
-    # TSHD_RADIUS = 47
-    # mr = validation.min_radius(list(zip(xs, ys)))
-    # if TSHD_RADIUS > validation.min_radius(list(zip(list(xs), list(ys)))) > 0.0:
-    #     check = True
-    # else:
-    #     check = False
-    # print("min radius:{}".format(mr))
-    # print("is too sharp:{}".format(check))
+    TSHD_RADIUS = 47
+    mr = validation.min_radius(list(zip(xs, ys)), int(5/interpolation_distance))
+    if TSHD_RADIUS > mr > 0.0:
+        check = True
+    else:
+        check = False
+    print("min radius:{}".format(mr))
+    print("is too sharp:{}".format(check))
