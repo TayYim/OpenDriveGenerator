@@ -152,16 +152,16 @@ def get_geometry_parampoly3_node(s, x, y, hdg, length, us, vs):
 
 if __name__=="__main__":
     template_path = "template.xodr"
-    output_path = "/home/tay/Applications/esmini/output.xodr"
-    # output_path = "output.xodr"
+    # output_path = "/home/tay/Applications/esmini/output.xodr"
+    output_path = "output.xodr"
 
     # Input x/y points
     # limits 55-56 46.7-47.2
     # 155.8 ok 159.34
-    old_xs= [0, 30, 40, 50, 150, 155 ]
-    old_ys= [0, 20, 30, 40, 100, 180 ]
-    # old_xs= [10, 30, 40, 50, 150, 30 ]
-    # old_ys= [20, 20, 30, 40, 100, 180 ]
+    # old_xs= [0, 30, 40, 50, 150, 140 ]
+    # old_ys= [0, 20, 30, 40, 100, 180 ]
+    old_xs= [10, 30, 40, 50, 150, 30 ]
+    old_ys= [20, 20, 30, 40, 100, 180 ]
 
     xs, ys = interpolate(old_xs, old_ys)
     xs = np.array(xs)
@@ -188,7 +188,9 @@ if __name__=="__main__":
     planView = road.find('planView')
 
     # Set road length
-    road.attrib["length"] = str(s_list[-1])
+    # add extra
+    road.attrib["length"] = str(s_list[-1]) 
+    print("Total length:{}".format(road.attrib["length"]))
 
     # Generate every segment
     segment_length = 20
@@ -238,3 +240,25 @@ if __name__=="__main__":
         check = False
     print("min radius:{}".format(mr))
     print("is too sharp:{}".format(check))
+
+    # get start point
+    x0 = xs[0]
+    y0 = ys[0]*-1
+    w = 5.89 # 车道宽
+    hdg0 = hdg_list[0]
+    x1 = x0 + w/2 * np.cos(hdg0 - np.pi/2)
+    y1 = y0 + w/2 * np.sin(hdg0 - np.pi/2)
+    # print(x0, y0, hdg0)
+    # print(np.pi/2 - hdg0)
+    print("x1:{}, y1:{}".format(x1, y1))
+
+    # get ending point
+    x_l = xs[-1]
+    y_l = ys[-1]*-1
+    w = 5.89 # 车道宽
+    hdg_l = hdg_list[-1]
+    x1 = x_l + w/2 * np.cos(hdg_l - np.pi/2)
+    y1 = y_l + w/2 * np.sin(hdg_l - np.pi/2)
+    print(x_l, y_l, hdg_l)
+    print(np.pi/2 - hdg_l)
+    print("x1:{}, y1:{}".format(x1, y1))
